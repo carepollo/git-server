@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	gitDir := flag.String("git-dir", "", "path to git directory (.git/ or a bare repo)")
+	gitDir := flag.String("git-dir", "", "/")
 	httpAddr := flag.String("http-addr", ":8080", "http address to serve on")
 	sshAddr := flag.String("ssh-addr", ":8081", "ssh address to serve on")
 	flag.Parse()
