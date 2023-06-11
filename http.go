@@ -14,7 +14,7 @@ import (
 
 var (
 	gitserver = server.DefaultServer
-	gitpath   = "/tmp"
+	gitpath   = "/tmp/usertest/test.git"
 )
 
 func runHTTP(dir, addr string) error {
@@ -38,7 +38,7 @@ func httpInfoRefs(rw http.ResponseWriter, r *http.Request) {
 	var err error
 	var session transport.Session
 
-	ep, err := transport.NewEndpoint(gitpath + r.URL.Path)
+	ep, err := transport.NewEndpoint(gitpath)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Println(err)
@@ -89,7 +89,7 @@ func httpGitUploadPack(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ep, err := transport.NewEndpoint(gitpath + r.URL.Path)
+	ep, err := transport.NewEndpoint(gitpath)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		log.Println(err)
@@ -130,7 +130,7 @@ func httpGitReceivePack(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ep, err := transport.NewEndpoint(gitpath + r.URL.Path)
+	ep, err := transport.NewEndpoint(gitpath)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		log.Println(err)
