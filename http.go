@@ -14,7 +14,7 @@ import (
 
 var (
 	gitserver = server.DefaultServer
-	gitpath   = "/tmp/usertest/test.git"
+	gitpath   = "/srv/git/ChickenFace/publicrepo.git"
 )
 
 func runHTTP(dir, addr string) error {
